@@ -87,9 +87,33 @@ public static class TextureHelper
         return retval;
     }
 
+    public static Sprite ConvertTexture(this Texture2D texture, Vector2 pivot, FilterMode filterMode = FilterMode.Point)
+    {
+        texture.filterMode = filterMode;
+        Sprite retval = Sprite.Create(texture, new Rect(0,0,texture.width,texture.height), pivot);
+        return retval;
+    }
+
+    public static Sprite ConvertTexture(this Texture2D texture, FilterMode filterMode = FilterMode.Point)
+    {
+        texture.filterMode = filterMode;
+        Sprite retval = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), DEFAULT_PIVOT);
+        return retval;
+    }
+
     public static Sprite GetImageAsSprite(string pathCardArt, SpriteType spriteType, FilterMode filterMode = FilterMode.Point)
     {
         return GetImageAsTexture(pathCardArt).ConvertTexture(spriteType, filterMode);
+    }
+
+    public static Sprite GetImageAsSprite(string pathCardArt, Vector2 pivot, FilterMode filterMode = FilterMode.Point)
+    {
+        return GetImageAsTexture(pathCardArt).ConvertTexture(pivot, filterMode);
+    }
+
+    public static Sprite GetImageAsSprite(string pathCardArt, FilterMode filterMode = FilterMode.Point)
+    {
+        return GetImageAsTexture(pathCardArt).ConvertTexture(filterMode);
     }
 
     public static void RegisterEmissionForSprite(this Sprite regularSprite, Sprite emissionSprite)
