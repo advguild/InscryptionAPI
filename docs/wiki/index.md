@@ -1153,6 +1153,10 @@ if (AssetBundleHelper.TryGet("pathToAssetBundle", "nameOfPrefabInAssetBundle", o
     TotemManager.NewTopPiece<CustomIconTotemTopPiece>("NameOfTotem", Plugin.PluginGuid, Tribe, prefab);
 }
 ```
+When using CustomIcon TotemTopPiece, You will need to have a small sprite attached to your prefab titled "Icon" in your Assetbundle. 
+
+If it shows in game, you can set the material alpha of the sprite to be transparent. 
+Note: If your object is clipping through the tables, try changing the origin to the bottom of the totem top in blender or Unity.
 
 ## "I don't have an icon to show on my totem top!"
 You will need a new class for your totem top so it doesn't look for an icon to populate from a tribe.   
